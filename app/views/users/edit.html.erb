@@ -1,4 +1,10 @@
 <h2>User info</h2>
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors prohibited this obj from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
 <%= form_with model: @user, local: true do |f| %>
   <label for="inputName">Name</label>
   <p><%= f.text_field :name, autofocus: true, id:"inputName" %></p>
